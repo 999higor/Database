@@ -21,8 +21,9 @@ int main()
     int i = 0;
     int numPalavras = 0;
     const char s[2] = "&";
-    char* palavras[50];
-    char line[50];
+    char* palavras[20];  /// ponteiro
+    char line[22];
+    char* result;
 
     FILE *arquivo;
     arquivo = fopen("funcionario.txt", "r");
@@ -32,10 +33,17 @@ int main()
     if (arquivo == NULL)
         return EXIT_FAILURE;
 
-    while(fgets(line, sizeof line, arquivo) != NULL)
+    while(!feof(arquivo))
     {
+        fgets(line, sizeof line, arquivo);
+
+        //printf("%c",line[20]);
+        //break;
         ///Adiciona cada palavra no vetor
         palavras[i] = strdup(line);
+       //strncpy(palavras, line ,20);
+       //printf("[%s] \n",palavras);
+       //break;
 
         i++;
 
@@ -49,7 +57,7 @@ int main()
         printf("\n%s", palavras[j]); ///Exibi as palavras que estao no vetor.
 
     printf("\n\n");
-    printf("%i", numPalavras);
+    printf("Palavras: %i", numPalavras);
 
     fclose(arquivo);
 

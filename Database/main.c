@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <string.h>
+#include <stdbool.h>
 
 /*
 https://pt.stackoverflow.com/questions/108678/como-ler-arquivos-de-texto-e-colocar-as-palavras-em-um-vetor
@@ -20,49 +21,71 @@ int main()
 {
     funcionario func[18];
     int i = 0;
+    int k = 0;
+    int bloco = 0;
     int numPalavras = 0;
-    //const char s[2] = "&";
-    char* palavras[20];  /// ponteiro
     char line[22];
-    char* result;
+    char name[22];
+    bool teste = false;
 
     FILE *arquivo;
     arquivo = fopen("funcionario.txt", "r");
 
     setlocale(LC_ALL, "PORTUGUESE");
 
+    printf("Digite o nome para Busca:\n");
+    scanf("%s",name);
+    name[strlen(name)+1] = '\0';
+    name[strlen(name)] = '&';
+    //puts(name);
+    //printf(">> %s - %d\n", name, strlen(name));
+
+    printf("\n");
+
     if (arquivo == NULL)
         return EXIT_FAILURE;
 
-    while(!feof(arquivo))
+    while(!feof(arquivo) && teste == false)
     {
-        fgets(line, 22, arquivo);
-        sscanf(line, "%s %s %f" ,func[i].nome, func[i].sexo, &func[i].salario);
-        printf("%s %s %f\n" ,func[i].nome, func[i].sexo, func[i].salario);
-        getc(arquivo);
+        for(k=0; k<3; k++)
+        {
+            fgets(line, 22, arquivo);
+            sscanf(line, "%s %s %f" ,func[i].nome, func[i].sexo, &func[i].salario);
+            //printf("%s %s %f\n" ,func[i].nome, func[i].sexo, func[i].salario);
+            getc(arquivo);
 
-        //fgets(line, sizeof line, arquivo);
+            ///Conta a quantidade de palavras
 
-        //printf("%c",line[10]);
-        //break;
-        ///Adiciona cada palavra no vetor
-       // palavras[i] = strdup(line);
-       //strncpy(palavras, line ,22);
-       //printf("[%s] \n",palavras);
-       //break;
+            numPalavras++;
+           // printf("%s - %d\n", func[i].nome, strlen(func[i].nome));
 
-        i++;
+            if(strcmp(name, func[i].nome) == 0)
+            {
+                printf("Nome: %s\nSexo: %s\nSalário: %0.2f\n",func[i].nome ,func[i].sexo ,func[i].salario);
+                teste = true;
+                //break;
+            }
+            i++;
+            if(teste)
+                break;
+        }
 
-        ///Conta a quantidade de palavras
-        numPalavras++;
+        bloco++;
+
     }
-    int j;
+    printf("\nBlocos: %d\n",bloco);
+    printf("Comparações: %d\n",i);
 
-    for (j = 0; j < numPalavras; j++)
+
+    //int j;
+
+    /*for (j = 0; j < numPalavras; j++)
         printf("\n%s", func[j].nome); ///Exibi as palavras que estao no vetor.
 
-    printf("\n\n");
-    printf("Palavras: %i", numPalavras);
+    printf("\n\n");*/
+
+
+   //printf("Palavras: %i", numPalavras);
 
     fclose(arquivo);
 

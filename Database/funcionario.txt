@@ -1,18 +1,18 @@
-Ana&         F600.00
-Bernardo&    M600.00
-Caio&        M600.00
-Diane&       F600.00
-Eduarda&     F6000.5
-Fernando&    M600.50
-Giovana&     F600.50
-Hortência&   F900.00
-Irineu&      M900.00
-Janete&      F900.00
-Laís&        F600.00
-Maria&       F800.00
-Natália&     F800.00
-Olavo&       M600.00
-Pedro&       M700.00
-Renata&      F600.00
-Sabrina&     F700.00
-Tatiana&     F600.00
+Ana&         F 600.00
+Bernardo&    M 600.00
+Caio&        M 600.00
+Diane&       F 600.00
+Eduarda&     F 6000.5
+Fernando&    M 600.50
+Giovana&     F 600.50
+Hortência&   F 900.00
+Irineu&      M 900.00
+Janete&      F 900.00
+Laís&        F 600.00
+Maria&       F 800.00
+Natália&     F 800.00
+Olavo&       M 600.00
+Pedro&       M 700.00
+Renata&      F 600.00
+Sabrina&     F 700.00
+Tatiana&     F 600.00

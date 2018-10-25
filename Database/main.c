@@ -8,19 +8,20 @@ https://pt.stackoverflow.com/questions/108678/como-ler-arquivos-de-texto-e-coloc
 https://pt.stackoverflow.com/questions/42585/ler-dados-de-arquivos-separados-por-v%C3%ADrgulas-em-c
 */
 
-struct funcionario
+typedef struct
 {
     char nome[30];
     char sexo[2];
     float salario;
 
-};
+}funcionario;
 
 int main()
 {
+    funcionario func[18];
     int i = 0;
     int numPalavras = 0;
-    const char s[2] = "&";
+    //const char s[2] = "&";
     char* palavras[20];  /// ponteiro
     char line[22];
     char* result;
@@ -35,13 +36,18 @@ int main()
 
     while(!feof(arquivo))
     {
-        fgets(line, sizeof line, arquivo);
+        fgets(line, 22, arquivo);
+        sscanf(line, "%s %s %f" ,func[i].nome, func[i].sexo, &func[i].salario);
+        printf("%s %s %f\n" ,func[i].nome, func[i].sexo, func[i].salario);
+        getc(arquivo);
 
-        //printf("%c",line[20]);
+        //fgets(line, sizeof line, arquivo);
+
+        //printf("%c",line[10]);
         //break;
         ///Adiciona cada palavra no vetor
-        palavras[i] = strdup(line);
-       //strncpy(palavras, line ,20);
+       // palavras[i] = strdup(line);
+       //strncpy(palavras, line ,22);
        //printf("[%s] \n",palavras);
        //break;
 
@@ -50,11 +56,10 @@ int main()
         ///Conta a quantidade de palavras
         numPalavras++;
     }
-
     int j;
 
     for (j = 0; j < numPalavras; j++)
-        printf("\n%s", palavras[j]); ///Exibi as palavras que estao no vetor.
+        printf("\n%s", func[j].nome); ///Exibi as palavras que estao no vetor.
 
     printf("\n\n");
     printf("Palavras: %i", numPalavras);
